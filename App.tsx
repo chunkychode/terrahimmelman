@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,900;1,900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-paper: #ffffff;
+  --color-ink: #020617; /* Slate 950 */
+  --color-accent: #3b82f6; /* Modern Blue */
+  --color-surface: #f8fafc; /* Slate 50 */
+  --color-border: #e2e8f0; /* Slate 200 */
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-sans antialiased selection:bg-accent/20 selection:text-accent;
+  }
+}
+
+.text-huge {
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+}
+
+.split-pane {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .split-pane {
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.stat-card {
+  @apply relative overflow-hidden rounded-3xl border border-border bg-white p-6 transition-all duration-500;
+}
+
+.stat-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 transition-opacity duration-500;
+}
+
+.stat-card:hover::before {
+  @apply opacity-100;
+}
+
+.rail-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.2em;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 700;
+  @apply text-slate-400;
+}
+
+.bg-dots {
+  background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl shadow-slate-200/50;
+}
