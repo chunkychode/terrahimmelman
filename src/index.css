@@ -8,7 +8,7 @@
 
   --color-paper: #ffffff;
   --color-ink: #020617; /* Slate 950 */
-  --color-accent: #3b82f6; /* Modern Blue */
+  --color-accent: #e2437a; /* Rose */
   --color-surface: #f8fafc; /* Slate 50 */
   --color-border: #e2e8f0; /* Slate 200 */
 }
@@ -68,4 +68,14 @@
 
 .glass {
   @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl shadow-slate-200/50;
+}
+
+.passion-card {
+  @apply relative rounded-2xl border border-border bg-white p-4 w-full cursor-pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.passion-card:hover {
+  @apply shadow-sm;
+  transform: translateX(4px);
 }
