@@ -20,7 +20,7 @@
 }
 
 .text-huge {
-  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-size: clamp(2.35rem, 11vw, 9rem);
   line-height: 0.8;
   letter-spacing: -0.05em;
 }
@@ -78,4 +78,14 @@
 .passion-card:hover {
   @apply shadow-sm;
   transform: translateX(4px);
+}
+
+@media (max-width: 639px) {
+  .passion-card:hover {
+    transform: translateX(0);
+  }
+
+  .bg-dots {
+    background-size: 24px 24px;
+  }
 }

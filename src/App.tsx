@@ -96,10 +96,10 @@ export default function App() {
 
       <main className="split-pane">
         {/* ── Left Pane ── */}
-        <div className="relative flex flex-col h-full bg-paper z-10 overflow-y-auto">
-          <div className="p-8 md:p-12 lg:p-16 flex flex-col flex-1 min-h-full">
+        <div className="relative flex flex-col h-full bg-paper z-10 overflow-visible lg:overflow-y-auto">
+          <div className="p-6 md:p-12 lg:p-16 flex flex-col flex-1 min-h-full">
 
-            <header className="flex justify-between items-center mb-12">
+            <header className="flex justify-between items-center mb-8 md:mb-12">
               <span
                 className="font-serif italic font-black text-2xl tracking-tighter transition-colors duration-700"
                 style={{ color: active.color }}
@@ -116,14 +116,14 @@ export default function App() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-10"
+              className="mb-8 md:mb-10"
             >
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-2.5 mb-5 md:mb-6">
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold">Class of 2026</span>
                 <div className="h-px w-6 bg-slate-200" />
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold">Setter / Opposite</span>
               </div>
-              <h1 className="text-huge font-black uppercase mb-5">
+              <h1 className="text-huge font-black uppercase mb-4 md:mb-5">
                 Terra <br />
                 <span
                   className="font-serif italic font-normal transition-colors duration-700"
@@ -187,7 +187,7 @@ export default function App() {
                               animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
                               exit={{ opacity: 0, height: 0, marginTop: 0 }}
                               transition={{ duration: 0.3 }}
-                              className="flex gap-6 pt-3 border-t border-slate-100 overflow-hidden"
+                              className="flex flex-wrap gap-4 pt-3 border-t border-slate-100 overflow-hidden"
                             >
                               {passion.stats.map((s, j) => (
                                 <div key={j}>
@@ -209,7 +209,7 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="my-8 pl-4 border-l-2 transition-colors duration-700"
+              className="my-6 md:my-8 pl-4 border-l-2 transition-colors duration-700"
               style={{ borderColor: active.color + '70' }}
             >
               <p className="font-serif italic text-sm leading-relaxed text-slate-500">
@@ -217,7 +217,7 @@ export default function App() {
               </p>
             </motion.blockquote>
 
-            <footer className="flex justify-between items-center pt-5 border-t border-slate-100">
+            <footer className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center pt-5 border-t border-slate-100">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-300 font-bold">
                 © 2026 Terra Himmelman
               </span>
@@ -230,7 +230,7 @@ export default function App() {
         </div>
 
         {/* ── Right Pane ── */}
-        <div className="relative h-[60vh] lg:h-full bg-slate-950 overflow-hidden">
+        <div className="relative h-[68vh] sm:h-[72vh] lg:h-full bg-slate-950 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id === 'photography' ? `photo-${photoMain.id}` : active.id}
@@ -259,7 +259,7 @@ export default function App() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 lg:p-16 pointer-events-none">
+          <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-8 md:p-12 lg:p-16 pointer-events-none">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.id + '-text'}
@@ -283,27 +283,27 @@ export default function App() {
                     {active.category}
                   </span>
                 </div>
-                <h2 className="font-serif italic text-5xl md:text-6xl text-white mb-4 leading-[1.05]">
+                <h2 className="font-serif italic text-3xl sm:text-4xl md:text-6xl text-white mb-3 md:mb-4 leading-[1.05]">
                   {active.title}
                 </h2>
-                <p className="text-white/60 text-sm md:text-base leading-relaxed mb-8 max-w-sm font-light">
+                <p className="text-white/65 text-xs sm:text-sm md:text-base leading-relaxed mb-5 md:mb-8 max-w-sm font-light">
                   {active.description}
                 </p>
                 {active.highlight && (
                   <div
-                    className="mb-8 max-w-md rounded-2xl border px-4 py-4 backdrop-blur-sm"
+                    className="mb-5 md:mb-8 max-w-md rounded-2xl border px-3 py-3 sm:px-4 sm:py-4 backdrop-blur-sm"
                     style={{
                       borderColor: active.color + '66',
                       backgroundColor: active.color + '20',
                     }}
                   >
-                    <p className="font-serif italic text-white/90 text-sm md:text-base leading-relaxed">
+                    <p className="font-serif italic text-white/90 text-xs sm:text-sm md:text-base leading-relaxed">
                       {active.highlight}
                     </p>
                   </div>
                 )}
                 {active.id === 'photography' ? (
-                  <div className="flex gap-3 pointer-events-auto">
+                  <div className="flex gap-3 pointer-events-auto overflow-x-auto pb-2 pr-2">
                     {photoRest.map((photo) => (
                       <motion.div
                         key={photo.id}
@@ -312,7 +312,7 @@ export default function App() {
                         onClick={() => handlePhotoSwap(photo)}
                         className="cursor-pointer group/thumb"
                       >
-                        <div className="w-20 h-28 rounded-xl overflow-hidden border border-white/10 shadow-xl shadow-black/50">
+                        <div className="w-16 h-24 sm:w-20 sm:h-28 rounded-xl overflow-hidden border border-white/10 shadow-xl shadow-black/50">
                           <img
                             src={photo.src}
                             alt={photo.label}
@@ -327,7 +327,7 @@ export default function App() {
                     ))}
                   </div>
                 ) : (
-                  <div className="flex flex-wrap gap-2 pointer-events-auto">
+                  <div className="flex flex-wrap gap-2 pointer-events-auto max-w-md">
                     {active.tags.map((tag, i) => (
                       <span
                         key={i}
